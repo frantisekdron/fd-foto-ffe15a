@@ -6,12 +6,13 @@ const slider = element('slider');
 const buttons = [];
 const stored = new Map();
 const encoder = new TextEncoder();
+const version = new URL(document.currentScript.src).search;
 let key;
 let current = 0;
 let selection = 0;
 
 async function decryptFile(path) {
-  const response = await fetch('data/' + path + '.bin', {credentials: 'omit'});
+  const response = await fetch('data/' + path + '.bin' + version, {credentials: 'omit'});
   if (!response.ok) throw new Error('Soubor se nepodařilo načíst.');
   const payload = new Uint8Array(await response.arrayBuffer());
   return crypto.subtle.decrypt({name: 'AES-GCM', iv: payload.subarray(0, 12), additionalData: encoder.encode(path)}, key, payload.subarray(12));
