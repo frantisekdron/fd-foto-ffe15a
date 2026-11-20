@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="cs">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow, noarchive, noimageindex">
+  <meta name="referrer" content="no-referrer">
+  <meta name="color-scheme" content="light">
+  <title>Vršovická 1b · Porovnání fotografií</title>
+  <style>
+    :root { font: 16px/1.45 -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; color: #26372e; background: #f7f7f2; }
+    * { box-sizing: border-box; }
+    body { margin: 0; }
+    main { width: min(1120px, calc(100% - 48px)); margin: 32px auto 56px; }
+    header, .tools, .actions, .legend { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+    header { border-bottom: 1px solid #ccd3c9; padding-bottom: 20px; }
+    h1, h2, p { margin: 0; }
+    h1 { font: 500 clamp(28px, 4.3vw, 46px)/1.15 Georgia, serif; letter-spacing: -.035em; }
+    h2 { font-size: clamp(17px, 2.4vw, 24px); line-height: 1.25; font-weight: 600; }
+    .tools { margin: 19px 0 13px; }
+    #file, #count { font-size: 13px; color: #526156; font-variant-numeric: tabular-nums; }
+    #file { display: block; margin-top: 4px; }
+    .actions { gap: 7px; }
+    button, .link { font: inherit; color: inherit; cursor: pointer; }
+    .link, .nav { display: inline-flex; align-items: center; justify-content: center; text-decoration: none; min-height: 40px; border-radius: 8px; border: 1px solid #b9c4b9; background: #fff; }
+    .link { padding: 7px 13px; font-size: 14px; font-weight: 550; white-space: nowrap; }
+    .primary { background: #294e3d; color: white; border-color: #294e3d; }
+    .nav { width: 40px; font: 20px/1 system-ui, sans-serif; }
+    #count { min-width: 55px; text-align: center; }
+    button:hover, .link:hover { border-color: #477658; }
+    button:focus-visible, a:focus-visible { outline: 3px solid #759948; outline-offset: 3px; }
+    #photo { --split: 0%; position: relative; margin: 0 auto; width: min(100%, 1080px, 105vh); aspect-ratio: 3 / 2; border-radius: 8px; background: #d9dbd4; overflow: hidden; }
+    #photo > img { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; }
+    #before { clip-path: inset(0 calc(100% - var(--split)) 0 0); }
+    .line { position: absolute; inset: 0 auto 0 var(--split); width: 2px; transform: translateX(-50%); background: #fff; box-shadow: 0 0 4px #26372eab; pointer-events: none; }
+    .handle { position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); width: 37px; height: 37px; display: grid; place-items: center; border-radius: 50%; color: #26372e; background: #fff; box-shadow: 0 2px 9px #26372e66; font: 19px/1 system-ui, sans-serif; }
+    #slider { position: absolute; inset: 0; width: 100%; height: 100%; margin: 0; opacity: 0; cursor: ew-resize; touch-action: pan-y; }
+    #photo:focus-within { outline: 3px solid #658648; outline-offset: 3px; }
+    .tag { position: absolute; bottom: 11px; padding: 3px 9px; background: #15241bd9; color: white; border-radius: 5px; font-size: 13px; pointer-events: none; }
+    .tag:first-of-type { left: 10px; }
+    .tag.after { right: 10px; }
+    .legend { padding: 14px 0 18px; border-bottom: 1px solid #ccd3c9; align-items: center; }
+    #note { color: #526156; font-size: 14px; }
+    #thumbs { display: grid; grid-template-columns: repeat(auto-fill, minmax(104px, 1fr)); gap: 10px; margin-top: 18px; }
+    .thumb { padding: 3px; background: transparent; border: 2px solid transparent; border-radius: 8px; text-align: left; min-width: 0; }
+    .thumb[aria-current="true"] { background: #e5ede2; border-color: #345f46; }
+    .thumb img { width: 100%; aspect-ratio: 3 / 2; display: block; object-fit: cover; border-radius: 3px; }
+    .thumb span { display: block; padding: 4px 2px 0; font-size: 11px; font-variant-numeric: tabular-nums; }
+    @media (max-width: 640px) {
+      main { width: calc(100% - 24px); margin: 18px auto 30px; }
+      header { padding-bottom: 14px; }
+      .tools { margin-top: 13px; }
+      .actions { gap: 2px; }
+      .nav { width: 33px; }
+      #count { min-width: 43px; }
+      #thumbs { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 4px; }
+      #note { font-size: 13px; }
+      .link { padding: 6px 10px; }
+    }
+    [hidden] { display: none !important; }
+    #access-status, noscript p { max-width: 38em; margin: 12vh auto; padding: 0 20px; text-align: center; }
+  </style>
+</head>
+<body>
+  <noscript><style>#access-status { display: none; }</style><p>Pro zobrazení fotografií zapněte v prohlížeči JavaScript.</p></noscript>
+  <p id="access-status" role="status">Načítání galerie…</p>
+  <main id="gallery" hidden>
+    <header>
+      <h1>Vršovická 1b</h1>
+      <a id="all-download" class="link primary" href="#" download="Vrsovicka-1b-fotografie.zip">Stáhnout 30 JPG</a>
+    </header>
+    <section aria-labelledby="room">
+      <div class="tools">
+        <div aria-live="polite" aria-atomic="true"><h2 id="room"></h2><span id="file"></span></div>
+        <div class="actions">
+          <button class="nav" id="prev" type="button" aria-label="Předchozí fotografie">←</button>
+          <span id="count"></span>
+          <button class="nav" id="next" type="button" aria-label="Další fotografie">→</button>
+        </div>
+      </div>
+      <div id="photo">
+        <img id="after" alt=""><img id="before" alt="">
+        <span class="tag">Před</span><span class="tag after">Po</span>
+        <div class="line" aria-hidden="true"><span class="handle">↔</span></div>
+        <input id="slider" type="range" min="0" max="100" step="1" value="0" aria-label="Podíl zobrazeného originálu">
+      </div>
+      <div class="legend">
+        <p id="note"></p><a id="download" class="link" download>Stáhnout tento JPG</a>
+      </div>
+    </section>
+    <nav id="thumbs" aria-label="Výběr fotografie"></nav>
+  </main>
+  <script type="application/json" id="photo-list">[[4979,"Od jídelního stolu do obýváku"],[4985,"Obývák s knihovnou"],[4990,"Posezení u rohového okna"],[4997,"Z obýváku do jídelny"],[4999,"Obývák a vstup do kuchyně"],[5004,"Balkon přes prosklené dveře"],[5008,"Balkon s vřesy"],[5014,"Výhled do parku"],[5021,"Výhled podél domu"],[5023,"Kuchyně u balkonových dveří"],[5030,"Kuchyně od jídelny"],[5034,"Kuchyňská linka a dřez"],[5038,"Chodba od kuchyně"],[5043,"Koupelna od dveří"],[5050,"Umyvadlo a pračka"],[5055,"Vana a topný žebřík"],[5058,"Koupelna s pračkou"],[5063,"Chodba směrem k obýváku"],[5073,"Předsíň a vstupní dveře"],[5078,"Podesta s výtahem"],[5083,"Vstup do bytu z podesty"],[5088,"Předsíň od vstupních dveří"],[5094,"Šatní skříň v chodbě"],[5098,"Výhled přes zábradlí"],[5103,"Ložnice s dětskou postelí"],[5116,"Ložnice směrem ke skříni"],[5120,"Ložnice a balkonové dveře"],[5124,"Ložnice směrem ke vstupu"],[5130,"Z pokoje ke koupelně"],[5135,"Před koupelnou"]]</script>
+  <script defer src="galerie.js"></script>
+</body>
+</html>
